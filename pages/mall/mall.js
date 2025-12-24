@@ -13,8 +13,8 @@ Page({
     isFilterActive: false, // 筛选按钮是否激活
     isFilterShow: false, // 筛选面板是否显示
     typeData: [], // 分类数据数组
-    selectedType: "", // 选中的分类值
-    productData: [], // 商品数据数组
+    selectedTypeId: "", // 选中的分类编号
+    productData: [], // 全部商品数据数组
     filteredProducts: [] // 筛选后的商品
   },
 
@@ -22,41 +22,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
     getType().then(async result =>{
       console.log('商品类型 ==>',result);
       this.setData({
         typeData: result.data.result
       })
-      let typeId = this.data.typeData[this.data.selectedTypeIndex].typeId;
-      console.log('选中的商品类型id==>',typeId);
-      let data = await getProductByType(typeId)
-      console.log("选中的商品类型的商品 data ==>",data);
+      let data = await getAllProduct();
+      console.log("全部商品 data ==>",data);
       this.setData({
-        filteredProducts :data.data.result
+        productData :data.data.result
       })
     })
     .catch(err =>{
       console.log('err ==>',err);
     })
-    // 初始化分类数据（示例，可根据实际需求修改）
     const defaultTypeData = [
-      { name: "全部", value: "" },
-      { name: "精选商品", value: "select" },
-      { name: "奢华商品", value: "luxury" },
-      { name: "尊爵商品", value: "honor" },
-      { name: "限定商品", value: "limit" },
-      { name: "究极商品", value: "ultimate" }
+      { type: "全部", typeId: "" },
+      { type: "精选商品", typeId: "1001" },
+      { type: "奢华商品", typeId: "1002" },
+      { type: "尊爵商品", typeId: "1003" },
+      { type: "限定商品", typeId: "1004" },
+      { type: "究极商品", typeId: "1005" }
     ];
 
-    // 初始化商品数据（示例，flag对应原稀有度）
+    // 初始化商品数据（示例，包含typeId属性）
     const defaultProductData = [
-      { id: 1, name: "回火礼包/V25", flag: "select", price: 4840 },
-      { id: 2, name: "千灵华绽/2.0", flag: "luxury", price: 8700 },
-      { id: 3, name: "曲奇套装", flag: "honor", price: 1695 },
-      { id: 4, name: "流风回雪", flag: "limit", price: 4350 },
-      { id: 5, name: "千灵华绽/2.0 狂徒", flag: "ultimate", price: 2175 },
-      { id: 6, name: "超时空卫队 三棱军刺", flag: "limit", price: 5350 }
+      { id: 1, name: "回火礼包/V25", typeId: "1001", price: 4840 },
+      { id: 2, name: "千灵华绽/2.0", typeId: "1002", price: 8700 },
+      { id: 3, name: "曲奇套装", typeId: "1003", price: 1695 },
+      { id: 4, name: "流风回雪", typeId: "1004", price: 4350 },
+      { id: 5, name: "千灵华绽/2.0 狂徒", typeId: "1005", price: 2175 },
+      { id: 6, name: "超时空卫队 三棱军刺", typeId: "1004", price: 5350 }
     ];
 
     // 设置初始数据并初始化商品列表
@@ -82,36 +78,55 @@ Page({
     });
   },
 
-  // 选择分类（基于typeData）
+  // 选择分类（返回选中的typeId）
   chooseType(e) {
-    const typeValue = e.currentTarget.dataset.type;
+    const typeId = e.currentTarget.dataset.typeid;
     this.setData({
-      selectedType: typeValue
+      selectedTypeId: typeId
     });
   },
 
   // 重置筛选条件
   resetFilter() {
     this.setData({
-      selectedType: "" // 重置为未选中（对应“全部”）
+      selectedTypeId: "" // 重置为未选中（对应“全部”分类）
     });
   },
 
-  // 确认筛选条件
-  confirmFilter() {
-    const { productData, selectedType } = this.data;
-    // 筛选逻辑：根据选中的分类（selectedType）匹配商品的flag
-    const filtered = productData.filter(item => {
-      // 若未选中分类（全部），直接返回true；否则匹配flag与选中分类
-      if (!selectedType) return true;
-      return item.flag === selectedType;
-    });
-
+  // 确认筛选条件（调用getProductByType方法实现筛选）
+  async confirmFilter() {
+    const { selectedTypeId } = this.data;
+    // 调用自定义筛选方法，传入选中的typeId，获取筛选后的商品
+    // api接入
+    // if (!selectedTypeId) {
+    //   const filteredResult = this.data.productData;
+    // }else{
+    //   let filteredResult = await getProductByType(selectedTypeId);
+    // }
+    
+    const filteredResult = this.getProductByType(selectedTypeId);
     // 更新商品列表+关闭筛选面板+取消按钮激活态
     this.setData({
-      filteredProducts: filtered,
+      filteredProducts: filteredResult,
       isFilterShow: false,
       isFilterActive: false
+    });
+  },
+
+  /**
+   * 自定义方法：通过typeId匹配商品（核心筛选逻辑）
+   * @param {String/Number} typeId 选中的分类编号
+   * @returns {Array} 筛选后的商品数组
+   */
+  getProductByType(typeId) {
+    const { productData } = this.data;
+    // 若typeId为空（选中“全部”），直接返回所有商品
+    if (!typeId) {
+      return productData;
+    }
+    // 匹配商品的typeId与选中的typeId，返回符合条件的商品
+    return productData.filter(item => {
+      return item.typeId === typeId;
     });
   }
 });

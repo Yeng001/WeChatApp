@@ -30,11 +30,11 @@
       <text class="filter-label">分类</text>
       <view class="option-wrap">
         <view 
-          class="option {{selectedType === item.type ? 'option-active' : ''}}" 
+          class="option {{selectedTypeId === item.typeId ? 'option-active' : ''}}" 
           bindtap="chooseType" 
           wx:for="{{typeData}}" 
           wx:key="value"
-          data-type="{{item.type}}"
+          data-typeid="{{item.typeId}}"
         >
           {{item.type}}
         </view>

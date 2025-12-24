@@ -34,7 +34,7 @@ export const getAllProduct= () =>{
   ) 
 }
 
-// 根据皮肤类型获取皮肤
+// 根据商品类型获取商品
 export const getProductByType= typeId =>{
   return new Promise((resolve, reject) => {
     wx.request({
