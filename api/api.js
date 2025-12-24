@@ -1,7 +1,7 @@
 //api接口访问地址
 let baseUrl = '';
 
-//获取皮肤类型
+//获取商品类型
 export const getType = () => {
   return new Promise((resolve,reject) => {
     wx.request({
@@ -17,11 +17,11 @@ export const getType = () => {
   })
 }
 
-// 获取全部皮肤
+// 获取全部商品
 export const getAllProduct= () =>{
   return new Promise((resolve, reject) => {
     wx.request({
-      url: `${baseUrl}/typeProducts`,
+      url: `${baseUrl}/items`,
       method: 'GET',
       success: result => {
         resolve(result)
@@ -38,7 +38,7 @@ export const getAllProduct= () =>{
 export const getProductByType= typeId =>{
   return new Promise((resolve, reject) => {
     wx.request({
-      url: `${baseUrl}/typeProducts`,
+      url: `${baseUrl}/typeItems`,
       method: 'GET',
       data: {
         typeId

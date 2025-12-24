@@ -12,7 +12,7 @@ Page({
     searchKey: "", // 搜索关键词
     isFilterActive: false, // 筛选按钮是否激活
     isFilterShow: false, // 筛选面板是否显示
-    typeData: [], // 分类数据数组（可自定义填充选项）
+    typeData: [], // 分类数据数组
     selectedType: "", // 选中的分类值
     productData: [], // 商品数据数组
     filteredProducts: [] // 筛选后的商品
@@ -22,6 +22,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+
+    getType().then(async result =>{
+      console.log('商品类型 ==>',result);
+      this.setData({
+        typeData: result.data.result
+      })
+      let typeId = this.data.typeData[this.data.selectedTypeIndex].typeId;
+      console.log('选中的商品类型id==>',typeId);
+      let data = await getProductByType(typeId)
+      console.log("选中的商品类型的商品 data ==>",data);
+      this.setData({
+        filteredProducts :data.data.result
+      })
+    })
+    .catch(err =>{
+      console.log('err ==>',err);
+    })
     // 初始化分类数据（示例，可根据实际需求修改）
     const defaultTypeData = [
       { name: "全部", value: "" },

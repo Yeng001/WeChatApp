@@ -8,7 +8,7 @@ Component({
     proData:{
       type: Object,
       value: {
-        smallImg: '',
+        itemImg: '',
         flag: '标志',
         name: '商品名称',
         price: '0.00'
