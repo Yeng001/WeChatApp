@@ -1,0 +1,57 @@
+.productBack{
+  background-color: #2c2c2c;
+}
+
+.auto-img{
+  width: 100%;
+  display: block;
+}
+
+.pro-info{
+  margin-top: 10rpx;
+}
+
+.name{
+  font-size: 28rpx;
+}
+
+.priceBox{
+  display: flex;
+  margin-top: 10rpx;
+  align-items: center;
+}
+
+.priceImgBox{
+  width: 33rpx;
+  height: 33rpx;
+  display: flex;
+}
+
+.price{
+  font-size: 28rpx;
+  color:red;
+  font-weight: bold;
+  
+}
+
+.one-text{
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.img-box{
+  position: relative;
+}
+
+.tag{
+  position: absolute;
+  height: 36rpx;
+  right: 0;
+  top: 0;
+  background-color: #DB1A4B;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 4rpx 10rpx;
+  border-top-left-radius: 22rpx;
+}

@@ -1,0 +1,9 @@
+
+{
+    "navigationBarTitleText": "商城",
+    "navigationBarBackgroundColor": "#DB1A4B",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+      "Product": "/components/Product/Product"
+    }
+}

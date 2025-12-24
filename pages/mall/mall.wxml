@@ -1,0 +1,57 @@
+<!-- 商城页面容器 -->
+<view class="mall-container">
+  <!-- 搜索+筛选栏 -->
+  <view class="search-bar">
+    <!-- 搜索框 -->
+    <view class="search-input-wrap">
+      <image class="search-icon" src="../../images/search.png" mode="widthFix"></image>
+      <input 
+        class="search-input" 
+        placeholder="搜索商品" 
+        placeholder-class="search-placeholder"
+        bindinput="handleSearchInput"
+      />
+    </view>
+    <!-- 筛选按钮（带激活态） -->
+    <view class="filter-btn" bind:tap="toggleFilterPanel">
+      <image 
+        class="filter-icon" 
+        src="{{isFilterActive ? '../../images/selectType_active.png' : '../../images/selectType.png'}}" 
+        mode="widthFix"
+      ></image>
+      <text class="filter-text" style="color: {{isFilterActive ? 'red' : '#FFFFFFF'}}">筛选</text>
+    </view>
+  </view>
+
+  <!-- 筛选面板（默认隐藏） -->
+  <view class="filter-panel" wx:if="{{isFilterShow}}">
+    <!-- 单一分类筛选（基于typeData） -->
+    <view class="filter-item">
+      <text class="filter-label">商品分类</text>
+      <view class="option-wrap">
+        <view 
+          class="option {{selectedType === item.value ? 'option-active' : ''}}" 
+          bindtap="chooseType" 
+          wx:for="{{typeData}}" 
+          wx:key="value"
+          data-type="{{item.type}}"
+        >
+          {{item.type}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="filter-btns">
+      <view class="reset-btn" bindtap="resetFilter">重置</view>
+      <view class="confirm-btn" bindtap="confirmFilter">确定</view>
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="product-list">
+    <view class="product-item" wx:for="{{filteredProducts}}" wx:key="id">
+      <Product productInfo="{{item}}"></Product>
+    </view>
+  </view>
+</view>

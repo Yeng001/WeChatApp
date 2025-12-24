@@ -1,0 +1,15 @@
+<view class="productBack">
+  <view class="img-box">
+    <image class="auto-img" src="{{proData.smallImg}}" mode="widthFix"/>
+    <view class="tag" wx:if="{{proData.flag}}">{{proData.flag}}</view>
+  </view>
+  <view class="pro-info">
+    <view class="name one-text">{{proData.name}}</view>
+    <view class="priceBox">
+      <view class="priceImgBox">
+        <image class="auto-img" src="../../images/price.png" mode="widthFix"/>
+      </view>
+      <view class="price">{{proData.price}}</view>
+    </view>
+  </view>  
+</view>
