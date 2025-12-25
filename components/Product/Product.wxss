@@ -1,5 +1,8 @@
 .productBack{
   background-color: #2c2c2c;
+  position: relative;
+  padding: 20rpx;
+  border-radius: 8rpx;
 }
 
 .auto-img{
@@ -55,4 +58,23 @@
   font-size: 24rpx;
   padding: 4rpx 10rpx;
   border-top-left-radius: 22rpx;
+}
+
+/* 添加到购物车按钮样式 */
+.add-cart-btn {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.add-cart-icon {
+  width: 40rpx;
+  height: 40rpx;
 }

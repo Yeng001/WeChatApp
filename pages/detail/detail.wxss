@@ -75,9 +75,9 @@ page {
   margin-top: 10rpx;
 }
 .price-icon {
-  width: 32rpx;
-  height: 32rpx;
-  margin-right: 10rpx;
+  width: 38rpx;
+  height: 38rpx;
+  
 }
 .goods-price {
   font-size: 36rpx;

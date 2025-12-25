@@ -147,5 +147,21 @@ filterProducts() {
     this.setData({
       isFilterShow: false
     });
+  },
+
+  // 查看商品详情
+  viewDetail(e) {
+    let pid = e.currentTarget.dataset.pid;
+    wx.navigateTo({
+      url: `../detail/detail?pid=${pid}`
+    })
+  },
+
+  // 处理添加到购物车事件
+  handleAddCart(e) {
+    const product = e.detail.product;
+    console.log('添加到购物车的商品：', product);
+    // 这里可以调用API将商品添加到购物车
+    // 目前已经在组件内部显示了添加成功的提示
   }
 });

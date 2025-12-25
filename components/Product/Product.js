@@ -27,6 +27,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    // 添加到购物车
+    addCart() {
+      const product = this.data.proData;
+      // 触发自定义事件，通知父组件添加到购物车
+      this.triggerEvent('addcart', { product });
+      // 显示添加成功提示
+      wx.showToast({
+        title: '已添加到购物车',
+        icon: 'success',
+        duration: 1000
+      });
+    }
   }
 })

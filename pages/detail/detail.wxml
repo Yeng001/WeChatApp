@@ -17,7 +17,7 @@
       </view>
       <text class="goods-eng-name">{{detailData.enname}}</text>
       <view class="price-wrap">
-        <image class="price-icon" src="../../images/price.png" mode="widthFix"></image>
+        <image class="price-icon" src="../../images/priced.png" mode="widthFix"></image>
         <text class="goods-price">{{detailData.price}}</text>
       </view>
     </view>

@@ -51,8 +51,8 @@
 
   <!-- 商品列表 -->
   <view class="product-list">
-    <view class="product-item" wx:for="{{filteredProducts}}" wx:key="id">
-      <Product pro-data="{{item}}"></Product>
+    <view class="product-item" wx:for="{{filteredProducts}}" wx:key="id" bind:tap="viewDetail" data-pid="{{item.pid}}">
+      <Product pro-data="{{item}}" bind:addcart="handleAddCart"></Product>
     </view>
   </view>
 </view>

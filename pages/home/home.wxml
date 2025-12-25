@@ -2,7 +2,7 @@
 <!-- 首页整体容器 -->
 <view class="home-container">
   <!-- 轮播图区域 -->
-  <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" indicator-active-color="#0C34BA">
+  <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" indicator-active-color="#DB1A4B">
     <swiper-item wx:for="{{bannerData}}" >
       <image class ="banner-img" src="{{item.largeImg}}" mode="widthFix"></image>
     </swiper-item>
@@ -11,7 +11,7 @@
   <!-- 商品列表区域 -->
   <view class="product-grid">
     <view class ="product-item" wx:for="{{productsData}}" wx:key="index" bind:tap="viewDetail" data-pid="{{item.pid}}">
-      <Product pro-data="{{item}}"></Product>
+      <Product pro-data="{{item}}" bind:addcart="handleAddCart"></Product>
     </view>
   </view>
 </view>

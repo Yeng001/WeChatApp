@@ -11,5 +11,8 @@
       </view>
       <view class="price">{{proData.price}}</view>
     </view>
-  </view>  
+  </view>
+  <view class="add-cart-btn" bindtap="addCart">
+    <image class="add-cart-icon" src="../../images/add.png" mode="widthFix"/>
+  </view>
 </view>
