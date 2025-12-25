@@ -1,2 +1,66 @@
-<!--pages/shopCart/shopCart.wxml-->
-<text>pages/shopCart/shopCart.wxml</text>
+<!-- 购物车页面容器 -->
+<view class="shopcart-container">
+  <!-- 顶部Logo区域 -->
+  <view class="top-logo-wrap">
+    <image class="top-logo" src="../../images/logo.png" mode="widthFix"></image>
+    <!-- 编辑按钮添加样式 -->
+    <view bind:tap="edit" class="edit-btn">{{isEdit ? '完成':'编辑'}}</view>
+  </view>
+
+  <!-- 商品列表区域 -->
+  <view class="goods-list">
+    <!-- 单个商品项 -->
+    <view class="goods-item" wx:for="{{shopList}}" wx:key="index">
+      <!-- 复选框 + 商品信息 + Stepper -->
+      <view class="item-wrap">
+        <!-- 复选框 -->
+        <checkbox class="item-checkbox" color="#0C34BA" checked="{{item.isChecked}}" data-index="{{index}}" bind:tap="oneChecked"></checkbox>
+        
+        <!-- 商品图片 -->
+        <image class="goods-img" 
+        src="{{item.smallImg}}" 
+        mode="widthFix"></image>
+        
+        <!-- 商品信息 -->
+        <view class="goods-info">
+          <text class="goods-name">{{item.name}}</text>
+          <text class="goods-spec">{{item.enname}}</text>
+          <text class="goods-price">¥{{item.price}}</text>
+        </view>
+        
+        <!-- 数量选择（Stepper组件） -->
+        <Stepper bind:countChange="handleCountChange" data-id="{{item.id}}" count="{{item.count}}"></Stepper>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <!-- 全选 -->
+    <view class="all-select-wrap">
+      <checkbox class="all-checkbox" color="#0C34BA" checked="{{isAllChecked}}" bind:tap="allChecked"></checkbox>
+      <text class="all-select-text">全选</text>
+    </view>
+
+    <!-- 编辑状态显示删除按钮，非编辑状态显示合计和提交订单 -->
+    <block wx:if="{{!isEdit}}">
+      <!-- 合计 -->
+      <view class="total-wrap">
+        <text class="total-label">合计:</text>
+        <text class="total-price">¥{{totalPrice.toFixed(2)}}</text>
+      </view>
+
+      <!-- 提交订单 -->
+      <view class="submit-btn">
+        <text class="submit-text">提交订单</text>
+      </view>
+    </block>
+
+    <block wx:else>
+      <!-- 删除选择按钮 -->
+      <view class="delete-btn">
+        <text class="delete-text">删除选择</text>
+      </view>
+    </block>
+  </view>
+</view>

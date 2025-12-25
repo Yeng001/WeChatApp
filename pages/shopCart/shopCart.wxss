@@ -1,1 +1,148 @@
-/* pages/shopCart/shopCart.wxss */
+/* 全局样式 */
+page {
+  background-color: #f2f2f2;
+}
+
+/* 购物车容器 */
+.shopcart-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
+/* 顶部Logo区域 */
+.top-logo-wrap {
+  padding: 20rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+.top-logo {
+  width: 120rpx;
+  height: auto;
+}
+
+/* 商品列表区域 */
+.goods-list {
+  flex: 1;
+  padding: 10rpx;
+}
+.goods-item {
+  background-color: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 15rpx;
+}
+.item-wrap {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  gap: 15rpx;
+}
+/* 复选框 */
+.item-checkbox {
+  transform: scale(0.8);
+}
+/* 商品图片 */
+.goods-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+}
+/* 商品信息 */
+.goods-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rpx;
+}
+.goods-name {
+  font-size: 28rpx;
+  color: #333;
+}
+.goods-spec {
+  font-size: 24rpx;
+  color: #999;
+}
+.goods-price {
+  font-size: 28rpx;
+  color: #DB1A4B;
+  font-weight: bold;
+}
+
+/* 编辑按钮样式 */
+.edit-btn {
+  color: #DB1A4B;
+  font-size: 28rpx;
+  margin-left: auto; /* 靠右显示 */
+}
+
+/* 删除选择按钮样式 */
+.delete-btn {
+  width: 200rpx;
+  height: 60rpx;
+  background-color: #DB1A4B;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto; /* 靠右显示 */
+}
+
+.delete-text {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+
+
+/* 底部操作栏 */
+.bottom-bar {
+  height: 90rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  box-shadow: 0 -2rpx 8rpx rgba(0,0,0,0.1);
+}
+.all-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+.all-checkbox {
+  transform: scale(0.8);
+}
+.all-select-text {
+  font-size: 28rpx;
+  color: #333;
+}
+.total-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5rpx;
+}
+.total-label {
+  font-size: 26rpx;
+  color: #333;
+}
+.total-price {
+  font-size: 30rpx;
+  color: #DB1A4B;
+  font-weight: bold;
+}
+.submit-btn {
+  width: 200rpx;
+  height: 60rpx;
+  background-color: #DB1A4B;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit-text {
+  font-size: 28rpx;
+  color: #fff;
+}

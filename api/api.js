@@ -174,3 +174,63 @@ export const addShopbag = params =>{
     })
   })
 }
+
+//获取购物袋商品数据
+export const getShopbagData = token =>{
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/findAllShopcart`,
+      method: 'GET',
+      data: {
+        token: token
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+//删除购物袋的商品
+export const removeShopbagData = params =>{
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/deleteShopcart`,
+      method: 'POST',
+      data: {
+        sids:params.sids,
+        token:params.token
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+//修改购物袋的商品数量
+export const updateShopbagCount = params =>{
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/modifyShopcartCount`,
+      method: 'POST',
+      data: {
+        sids:params.sid,
+        token:params.token,
+        count:params.count
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
