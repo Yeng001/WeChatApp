@@ -1,1 +1,34 @@
-/* pages/home/home.wxss */
+/* 轮播图区域样式 */
+.banner-swiper {
+  /* 轮播容器宽度占满屏幕，高度自适应（可根据需求调整） */
+  width: 100%;
+  height: 320rpx; /* 可根据设计稿调整高度 */
+}
+.banner-img {
+  /* 轮播图片宽度占满容器，高度自适应 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图片比例，避免拉伸变形 */
+}
+
+
+/* 商品列表区域样式 */
+.product-grid {
+  /* Flex流式布局，实现每行2个商品（对应你说的“界2个商品”） */
+  display: flex;
+  flex-wrap: wrap; /* 自动换行 */
+  justify-content: space-between; /* 两端对齐，保持间距均匀 */
+  padding: 16rpx 20rpx; /* 上下内边距16rpx，左右20rpx */
+  background-color: #f5f5f5; /* 列表背景色，可根据需求调整 */
+}
+
+/* 商品项容器（包裹Product组件） */
+.product-item {
+  /* 每行2个商品，宽度占比48%（预留2%作为间距） */
+  width: 48%;
+  margin-bottom: 20rpx; /* 商品项之间的上下间距 */
+  background-color: #fff; /* 商品项背景色 */
+  border-radius: 12rpx; /* 圆角 */
+  overflow: hidden; /* 避免内容溢出圆角 */
+  box-sizing: border-box; /* 让padding不影响宽度计算 */
+}

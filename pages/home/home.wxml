@@ -1,1 +1,19 @@
-<!-- 轮播图以及部分皮肤展示 -->
+
+<!-- 首页整体容器 -->
+<view class="home-container">
+
+
+</view>
+<!-- 轮播图区域 -->
+<swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" indicator-active-color="#0C34BA">
+  <swiper-item wx:for="{{bannerData}}" >
+    <image class ="banner-img" src="{{item.largeImg}}" mode="widthFix"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 商品列表区域 -->
+<view class="product-grid">
+  <view class ="product-item" wx:for="{{productsData}}">
+    <Product pro-data="{{item}}"></Product>
+  </view>
+</view>

@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/mall/mall",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/shopCart/shopCart"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -28,6 +29,12 @@
         "text": "商城",
         "iconPath": "./images/mall.png",
         "selectedIconPath": "./images/mall_active.png"
+      },
+      {
+        "pagePath": "pages/shopCart/shopCart",
+        "text": "购物车",
+        "iconPath": "./images/shopCart.png",
+        "selectedIconPath": "./images/shopCart_active.png"
       },
       {
         "pagePath": "pages/my/my",
