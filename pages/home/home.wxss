@@ -1,6 +1,11 @@
 .home-container{
   color: #fff;
+  background-color: #1a1a1a; /* 设置整个页面容器的背景颜色 */
+}
 
+/* 设置页面背景色 */
+page {
+  background-color: #1a1a1a; /* 设置页面的背景颜色 */
 }
 /* 轮播图区域样式 */
 .banner-swiper {
@@ -23,7 +28,7 @@
   flex-wrap: wrap; /* 自动换行 */
   justify-content: space-between; /* 两端对齐，保持间距均匀 */
   padding: 16rpx 20rpx; /* 上下内边距16rpx，左右20rpx */
-  background-color: #f5f5f5; /* 列表背景色，可根据需求调整 */
+  background-color: #1a1a1a; /* 列表背景色改为#1a1a1a */
 }
 
 /* 商品项容器（包裹Product组件） */
@@ -31,7 +36,7 @@
   /* 每行2个商品，宽度占比48%（预留2%作为间距） */
   width: 48%;
   margin-bottom: 20rpx; /* 商品项之间的上下间距 */
-  background-color: #fff; /* 商品项背景色 */
+  background-color: #2c2c2c; /* 商品项背景色保持与Product组件一致 */
   border-radius: 12rpx; /* 圆角 */
   overflow: hidden; /* 避免内容溢出圆角 */
   box-sizing: border-box; /* 让padding不影响宽度计算 */
