@@ -1,0 +1,10 @@
+
+  {
+    "navigationBarTitleText": "商品详情",
+    "navigationBarBackgroundColor": "#1a1a1a",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#1a1a1a",
+    "usingComponents": {
+      "Stepper": "/components/Stepper/Stepper"
+    }
+  }

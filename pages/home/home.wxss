@@ -1,3 +1,7 @@
+.home-container{
+  color: #fff;
+
+}
 /* 轮播图区域样式 */
 .banner-swiper {
   /* 轮播容器宽度占满屏幕，高度自适应（可根据需求调整） */

@@ -1,0 +1,13 @@
+<!-- 步进器容器 - flex布局 -->
+<view class="stepper-container">
+  <!-- 减数量按钮 -->
+  <view class="stepper-btn" bindtap="handleReduce">
+    <image class="btn-icon" src="../../images/reduce.png" mode="widthFix"></image>
+  </view>
+  <!-- 数量显示 -->
+  <view class="stepper-count">{{count}}</view>
+  <!-- 加数量按钮 -->
+  <view class="stepper-btn" bindtap="handleAdd">
+    <image class="btn-icon" src="../../images/add.png" mode="widthFix"></image>
+  </view>
+</view>

@@ -38,6 +38,13 @@ Page({
       bannerData,
       productsData
     })
-  }
+  },
 
+  // 查看商品详情
+  viewDetail(e) {
+    let pid = e.currentTarget.dataset.pid;
+    wx.navigateTo({
+      url:`../detail/detail?pid=${pid}`
+    })
+  }
 })

@@ -17,23 +17,6 @@ export const getType = () => {
   })
 }
 
-// 获取全部商品
-export const getAllProduct= () =>{
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: `${baseUrl}/products`,
-      method: 'GET',
-      success: result => {
-        resolve(result)
-      },
-      fail: err =>{
-        reject(err)
-      }
-    })
-  }
-  ) 
-}
-
 // 根据商品类型获取商品
 export const getProductByType= typeId =>{
   return new Promise((resolve, reject) => {
@@ -62,6 +45,25 @@ export const getProductByFlag = flags =>{
       method: 'GET',
       data: {
        flags
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+// 查看商品详情数据
+export const getDetail = pid => {
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/productDetail`,
+      method: 'GET',
+      data: {
+       pid
       },
       success: result => {
         resolve(result)

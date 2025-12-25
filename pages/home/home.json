@@ -2,4 +2,6 @@
   "usingComponents": {
      "Product": "../../components/Product/Product"
   },
-  "navigationBarTitleText": "首页"}
+  "navigationBarTitleText": "首页",
+  "navigationBarTextStyle": "white"
+}

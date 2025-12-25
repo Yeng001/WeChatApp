@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/mall/mall",
     "pages/my/my",
-    "pages/shopCart/shopCart"
+    "pages/shopCart/shopCart",
+    "pages/detail/detail"
   ],
   "window": {
     "navigationBarTextStyle": "white",

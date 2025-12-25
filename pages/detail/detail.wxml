@@ -1,0 +1,57 @@
+<!-- 商品详情整体容器 -->
+<view class="detail-container">
+  <!-- 商品图片区域 -->
+  <view class="goods-img-wrap">
+    <image class="goods-img" 
+    src="{{detailData.largeImg}}" 
+    mode="widthFix"></image>
+  </view>
+
+  <!-- 商品信息区域 -->
+  <view class="goods-info-wrap">
+    <!-- 商品名称 + 价格（价格左侧加图片） -->
+    <view class="goods-header">
+      <text class="goods-name">{{detailData.name}}</text>
+      <text class="goods-eng-name">{{detailData.enname}}</text>
+      <view class="price-wrap">
+        <image class="price-icon" src="../../images/price.png" mode="widthFix"></image>
+        <text class="goods-price">{{detailData.price}}</text>
+      </view>
+    </view>
+
+    <!-- 数量选择区域 -->
+    <view class="count-select-wrap">
+      <text class="count-label">选择数量</text>
+      <!-- 引用 Stepper 组件 -->
+      <Stepper bind:countChange="handleCountChange"></Stepper>
+    </view>
+
+    <!-- 商品描述区域 -->
+    <view class="goods-desc-wrap">
+      <text class="desc-title">商品描述</text>
+      <view class="desc-content">
+        <text class="desc-item" wx:for="{{detailData.descData}}" wx:key="index">{{index + 1}}. {{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏（固定在页面底部） -->
+  <view class="bottom-operate-bar">
+    <!-- 购物袋图标（跳转购物车） -->
+    <view class="bar-btn" bindtap="goToCart">
+      <image class="bar-icon" src="../../images/shopCart.png" mode="widthFix"></image>
+      <text class="bar-text">购物袋</text>
+    </view>
+
+    <!-- 收藏图标 -->
+    <view class="bar-btn" bindtap="handleCollect">
+      <image class="bar-icon" src="../../images/like.png" mode="widthFix"></image>
+      <text class="bar-text">收藏</text>
+    </view>
+
+    <!-- 加入购物袋按钮 -->
+    <view class="bar-main-btn" bindtap="handleAddCart">
+      <text class="main-btn-text">加入购物袋</text>
+    </view>
+  </view>
+</view>
