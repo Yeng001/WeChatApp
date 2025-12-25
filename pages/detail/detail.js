@@ -1,13 +1,23 @@
-import {getDetail} from '../../api/api'
+import {
+  getDetail,
+  getLikeByPid,
+  like,
+  cancelLike,
+  getShopbagCount,
+  addShopbag
+} from '../../api/api'
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    goodsCount: 1, // 商品选择数量
+    count: 1, // 商品选择数量
     pid:'',
-    detailData:{}
+    detailData:{},
+    isLike:false,
+    token:' ',
+    shopbagCount:0
   },
 
   /**
@@ -40,20 +50,13 @@ Page({
     });
   },
 
-  /**
-   * 点击购物袋图标，跳转到购物车页面
-   */
-  goToCart() {
-    // 假设购物车页面路径为 /pages/cart/cart，需提前在app.json注册
-    wx.navigateTo({
-      url: '/pages/cart/cart'
-    });
-  },
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
+    this.data.token = wx.getStorageSync('token34')
     console.log('options ==>',options);
     this.data.pid = options.pid;
     let data = await getDetail(this.data.pid);
@@ -62,6 +65,85 @@ Page({
     result.descData = result.desc.trim().split('\n')
     this.setData({
       detailData: result 
+    })
+    // 查询指定收藏商品
+    let params = {
+      pid: this.data.pid,
+      token: this.data.token
+    };
+    let likeResult = await getLikeByPid(params);
+    console.log('查询指定收藏商品 likeResult ==>', likeResult);
+    if(likeResult.data.code == 1000 && likeResult.data.result.length > 0){
+      this.setData({
+        isLike: true
+      })
+    }
+
+    //查询购物袋商品数量
+    let shopbagCountResult = await getShopbagCount(this.data.token);
+    console.log('查询购物袋商品数量 shopbagCountResult ==> ', shopbagCountResult);
+    if(likeResult.data.code == 4000 && shopbagCountResult.data.result != null){
+      this.setData
+      ({
+        shopbagCount: shopbagCountResult.data.result
+      })
+    }
+  },
+
+  //加入购物袋
+  async addShopbagData(){
+    let params ={
+      pid:this.data.pid,
+      token: this.data.token,
+      count: this.data.count
+    };
+    let data = await addShopbag(params);
+    if(data.data.code == 700){
+      return wx.navigateTo({
+        url: '../login/login',
+      })
+    }
+    if(data.data.code == 3000){
+      wx.showToast({
+        title: '加入购物车成功',
+        icon: 'none',
+        mask: true
+      })
+      this.setData({
+        shopbagCount: this.data.shopbagCount + this.data.count
+      })
+    }
+  },
+
+  //跳转到购物袋页面
+  goShopbag(){
+    wx.switchTab({
+      url: '../shopCart/shopCart'
+    })
+  },
+
+  // 收藏或取消收藏
+  async likeProduct(){
+    let data = null;
+    let params ={
+      pid:this.data.pid,
+      token: this.data.token
+    };
+    if(this.data.isLike){
+      //发起取消收藏请求
+      data = await cancelLike(params);
+    }else{
+      //发起收藏请求
+      data = await like(params);
+    }
+    console.log('收藏   或者  取消收藏 data ==> ', data);
+    if(data.data.code == 700){
+      return wx.navigateTo({
+        url: '../login/login'
+      })
+    }
+    this.setData({
+      isLike: !this.data.isLike
     })
   },
 

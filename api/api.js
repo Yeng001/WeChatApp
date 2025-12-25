@@ -75,3 +75,102 @@ export const getDetail = pid => {
   })
 }
 
+// 查询指定收藏商品
+export const getLikeByPid = params => {
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/findlike`,
+      method: 'GET',
+      data: {
+       pid: params.pid,
+       token: params.token
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+// 收藏商品
+export const like = params => {
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/like`,
+      method: 'POST',
+      data: {
+       pid: params.pid,
+       token: params.token
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+// 取消收藏
+export const cancelLike = params => {
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/notlike`,
+      method: 'POST',
+      data: {
+       pid: params.pid,
+       token: params.token
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+//查询购物车商品数量
+export const getShopbagCount = token => {
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/shopcartCount`,
+      method: 'GET',
+      data: {
+       token: token
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+//加入购物袋
+export const addShopbag = params =>{
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/addShopcart`,
+      method: 'POST',
+      data: {
+        pid: params.pid,
+        token: params.token,
+        count: params.count
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}

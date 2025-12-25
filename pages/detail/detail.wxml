@@ -11,7 +11,10 @@
   <view class="goods-info-wrap">
     <!-- 商品名称 + 价格（价格左侧加图片） -->
     <view class="goods-header">
-      <text class="goods-name">{{detailData.name}}</text>
+      <view class="goods-n">
+        <text class="goods-g" wx:if="{{detailData.flag}}">{{detailData.flag}}</text>
+        <text class="goods-name">{{detailData.name}}</text>
+      </view>
       <text class="goods-eng-name">{{detailData.enname}}</text>
       <view class="price-wrap">
         <image class="price-icon" src="../../images/price.png" mode="widthFix"></image>
@@ -38,20 +41,21 @@
   <!-- 底部操作栏（固定在页面底部） -->
   <view class="bottom-operate-bar">
     <!-- 购物袋图标（跳转购物车） -->
-    <view class="bar-btn" bindtap="goToCart">
+    <view class="bar-btn" bindtap="goShopbag">
       <image class="bar-icon" src="../../images/shopCart.png" mode="widthFix"></image>
-      <text class="bar-text">购物袋</text>
+      <text class="bar-text">购物车</text>
+      <text class="bar-count" hidden="{{shopbagCount == 0}}">{{shopbagCount}}</text>
     </view>
 
     <!-- 收藏图标 -->
-    <view class="bar-btn" bindtap="handleCollect">
-      <image class="bar-icon" src="../../images/like.png" mode="widthFix"></image>
-      <text class="bar-text">收藏</text>
+    <view class="bar-btn" bindtap="likeProduct">
+      <image class="bar-icon" src="../../images/{{isLike ? 'like_active' : 'like'}}.png" mode="widthFix"></image>
+      <text class="bar-text">{{isLike ? '取消收藏' : '收藏'}}</text>
     </view>
 
     <!-- 加入购物袋按钮 -->
-    <view class="bar-main-btn" bindtap="handleAddCart">
-      <text class="main-btn-text">加入购物袋</text>
+    <view class="bar-main-btn" bindtap="addShopbagData">
+      <text class="main-btn-text">加入购物车</text>
     </view>
   </view>
 </view>
