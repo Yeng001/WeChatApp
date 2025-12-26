@@ -1,0 +1,58 @@
+<view class="login-container">
+    <!-- 页面标题 -->
+    <view class="header">
+        <text class="title">用户登录</text>
+    </view>
+    
+    <!-- 手机号输入项 -->
+    <view class="input-row">
+        <text class="input-label">手机号</text>
+        <input 
+            class="input-field" 
+            placeholder="输入手机号" 
+            type="number" 
+            maxlength="11"
+            model:value="{{phone}}" 
+            bindinput="onPhoneInput"
+        />
+    </view>
+    
+    <!-- 密码输入项（含眼睛图标） -->
+    <view class="input-row">
+        <text class="input-label">密码</text>
+        <view class="password-wrap">
+            <input 
+                class="input-field-pwd" 
+                placeholder="输入密码" 
+                password="{{!showPassword}}"
+                maxlength="16"
+                model:value="{{password}}" 
+                bindinput="onPasswordInput"
+            />
+            <image 
+                class="eye-icon" 
+                src="../../images/{{showPassword ? 'open' : 'close'}}.png" 
+                mode="widthFix" 
+                bind:tap="togglePasswordStatus"
+            ></image>
+        </view>
+    </view>
+    
+    <!-- 登录按钮 -->
+    <view class="login-btn" bind:tap="login">
+        <text class="btn-text">登录</text>
+    </view>
+    
+    <!-- 辅助链接（找回密码/注册） -->
+    <view class="link-bar">
+        <text class="link-text">找回密码</text>
+        <text class="link-text" bind:tap="goRegister">没有账号，去注册</text>
+    </view>
+    
+    <!-- 提示信息 -->
+    <view class="tips-section">
+        <text class="tips-title">提示：</text>
+        <text class="tips-item">1、手机号为11位。</text>
+        <text class="tips-item">2、密码由数字、字母组合，且必须以字母开头，6-16位。</text>
+    </view>
+</view>

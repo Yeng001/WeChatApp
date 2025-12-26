@@ -1,0 +1,67 @@
+<view class="register-container">
+    <!-- 页面标题 -->
+    <view class="header">
+        <text class="title">用户注册</text>
+    </view>
+    
+    <!-- 手机号输入项 -->
+    <view class="input-row">
+        <text class="input-label">手机号</text>
+        <input 
+            class="input-field" 
+            placeholder="请输入11位手机号" 
+            type="number" 
+            maxlength="11"
+            model:value="{{phone}}" 
+            bindinput="onPhoneInput"
+        />
+    </view>
+    
+    <!-- 密码输入项 -->
+    <view class="input-row">
+        <text class="input-label">密码</text>
+        <view class="password-input-container">
+            <input 
+                class="password-input" 
+                placeholder="请输入密码（字母开头）" 
+                password="{{!showPassword}}"
+                maxlength="16"
+                model:value="{{password}}" 
+                bindinput="onPasswordInput"
+            />
+            <view class="eye-icon" bind:tap="togglePasswordStatus">
+                <text class="eye-text">{{showPassword ? '隐藏' : '显示'}}</text>
+            </view>
+        </view>
+    </view>
+    
+    <!-- 昵称输入项 -->
+    <view class="input-row">
+        <text class="input-label">昵称</text>
+        <input 
+            class="input-field" 
+            placeholder="输入昵称（中英文组合）" 
+            maxlength="16"
+            model:value="{{nickName}}" 
+            bindinput="onNickNameInput"
+        />
+    </view>
+    
+    <!-- 注册按钮 -->
+    <view class="register-btn" bind:tap="register">
+        <text class="btn-text">注册</text>
+    </view>
+    
+    <!-- 辅助链接 -->
+    <view class="link-bar">
+        <text class="link-text" bind:tap="goLogin">已有账号，去登录</text>
+    </view>
+    
+    <!-- 提示信息 -->
+    <view class="tips-section">
+        <text class="tips-title">提示:</text>
+        <text class="tips-item">1、手机号为11位。</text>
+        <text class="tips-item">2、密码由数字、字母组合，且必须以字母开头，6-16位。</text>
+        <text class="tips-item">3、昵称由中英文组合，1-16位。</text>
+    </view>
+</view>

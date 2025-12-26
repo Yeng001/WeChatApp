@@ -234,3 +234,44 @@ export const updateShopbagCount = params =>{
     })
   })
 }
+
+//用户登录
+export const userLogin = params =>{
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/login`,
+      method: 'POST',
+      data: {
+        phone: params.phone,
+        password: params.password
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
+
+//注册接口
+export const userRegister = params =>{
+  return new Promise((resolve,reject) =>{
+    wx.request({
+      url: `${baseUrl}/register`,
+      method: 'POST',
+      data: {
+        phone: params.phone,
+        password: params.password,
+        nickName: params.nickName
+      },
+      success: result => {
+        resolve(result)
+      },
+      fail: err =>{
+        reject(err)
+      }
+    })
+  })
+}
