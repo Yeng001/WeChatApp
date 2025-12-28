@@ -29,7 +29,7 @@
         </view>
         
         <!-- 数量选择（Stepper组件） -->
-        <Stepper bind:countChange="handleCountChange" data-id="{{item.id}}" count="{{item.count}}"></Stepper>
+        <Stepper bind:countChange="handleCountChange" data-index="{{index}}" count="{{item.count}}"></Stepper>
       </view>
     </view>
   </view>
@@ -58,7 +58,7 @@
 
     <block wx:else>
       <!-- 删除选择按钮 -->
-      <view class="delete-btn">
+      <view class="delete-btn" bind:tap="deleteSelected">
         <text class="delete-text">删除选择</text>
       </view>
     </block>

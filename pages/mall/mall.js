@@ -1,7 +1,7 @@
 import { 
   getType,
   getProductByType,
-  
+  addShopbag
 } from "../../api/api";
 
 Page({
@@ -158,10 +158,31 @@ filterProducts() {
   },
 
   // 处理添加到购物车事件
-  handleAddCart(e) {
+  async handleAddCart(e) {
     const product = e.detail.product;
     console.log('添加到购物车的商品：', product);
-    // 这里可以调用API将商品添加到购物车
-    // 目前已经在组件内部显示了添加成功的提示
+    // 获取token
+    const token = wx.getStorageSync('token34');
+    if (!token) {
+      return wx.navigateTo({ url: '../login/login' });
+    }
+    // 调用API添加到购物车
+    try {
+      const result = await addShopbag({
+        pid: product.pid,
+        token: token,
+        count: 1
+      });
+      console.log('添加到购物车结果：', result);
+      if (result.data.code === 700) {
+        return wx.navigateTo({ url: '../login/login' });
+      }
+    } catch (error) {
+      console.error('添加到购物车失败：', error);
+      wx.showToast({
+        title: '添加失败',
+        icon: 'none'
+      });
+    }
   }
 });

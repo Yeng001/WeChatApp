@@ -221,7 +221,7 @@ export const updateShopbagCount = params =>{
       url: `${baseUrl}/modifyShopcartCount`,
       method: 'POST',
       data: {
-        sids:params.sid,
+        sid:params.sid,
         token:params.token,
         count:params.count
       },

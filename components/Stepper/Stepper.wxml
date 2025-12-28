@@ -5,7 +5,7 @@
     <image class="btn-icon" src="../../images/reduce.png" mode="widthFix"></image>
   </view>
   <!-- 数量显示 -->
-  <view class="stepper-count">{{count}}</view>
+  <view class="stepper-count">{{currentCount}}</view>
   <!-- 加数量按钮 -->
   <view class="stepper-btn" bindtap="handleAdd">
     <image class="btn-icon" src="../../images/add.png" mode="widthFix"></image>
